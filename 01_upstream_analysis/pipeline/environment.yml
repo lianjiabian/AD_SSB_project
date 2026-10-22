@@ -1,0 +1,21 @@
+name: ssb-atlas-v2
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python>=3.10,<3.13
+  - bwa
+  - bwa-mem2
+  - samtools>=1.17
+  - bedtools>=2.31
+  - pyfaidx
+  - fastqc
+  - multiqc
+  - fastp
+  - pigz
+  - parallel
+  - gawk
+  - coreutils
+  - sed
+  - grep
+  - shellcheck
