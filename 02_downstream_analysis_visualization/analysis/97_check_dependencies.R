@@ -1,0 +1,11 @@
+# Run from the copied project root before reanalysis or figure reproduction.
+needed<-c('data.table','matrixStats','IRanges','limma','glmnet','Matrix','ggplot2','patchwork','svglite','ragg','openxlsx','officer','flextable','xml2','httr','jsonlite','stringr')
+available<-vapply(needed,requireNamespace,logical(1),quietly=TRUE)
+versions<-vapply(needed,function(x)if(requireNamespace(x,quietly=TRUE))as.character(packageVersion(x))else NA_character_,character(1))
+print(data.frame(package=needed,available=available,version=versions),row.names=FALSE)
+if(any(!available))stop('Missing packages: ',paste(needed[!available],collapse=', '),'. Install with CRAN/Bioconductor according to R_sessionInfo.txt.')
+if(nzchar(Sys.which('fc-match')))cat('Arial font resolution: ',system2('fc-match','Arial',stdout=TRUE),'\n')
+cat('Analysis input files: metadata/analysis_metadata.rds and matrices/{GENE,TSS200,INTRON,EXON}_inputs.rds\n')
+cat('For rebuilding from BED, set SSB_UPSTREAM_ROOT and SSB_REFERENCE_ROOT.\n')
+cat('For a new output location, set SSB_PROJECT_ROOT to that project root.\n')
+cat('R executable: ',Sys.which('Rscript'),'\n')
